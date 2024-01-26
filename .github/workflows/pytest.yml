@@ -1,14 +1,26 @@
-steps:
-- uses: actions/checkout@v4
-- name: Set up Python
-  uses: actions/setup-python@v4
-  with:
-    python-version: '3.x'
-- name: Install dependencies
-  run: |
-    python -m pip install --upgrade pip bs4 pandas pyhelpers
-    #pip install -r requirements.txt
-- name: Test with pytest
-  run: |
-    pip install pytest pytest-cov
-    pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+name: Get CodeCov to work
+env:
+  codecov_token: "7a98a1aa-6020-4818-9400-5acf6fd37e8c"
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Test python API
+    defaults:
+      run:
+        working-directory: ./api
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip bs4 pandas pyhelpers
+        #pip install -r requirements.txt
+    - name: Test with pytest
+      run: |
+        pip install pytest pytest-cov
+        pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
