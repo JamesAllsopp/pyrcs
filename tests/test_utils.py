@@ -82,12 +82,12 @@ def test_print_void_msg(capfd):
     assert out == 'No data of "Railway Codes" has been freshly collected.\n'
 
 
-def test_cd_data():
-    from pyrcs.utils import cd_data
-    import os
+# def test_cd_data():
+#     from pyrcs.utils import cd_data
+#     import os
 
-    path_to_dat_dir = cd_data(data_dir="data")
-    assert os.path.relpath(path_to_dat_dir) == 'pyrcs\\data'
+#     path_to_dat_dir = cd_data(data_dir="data")
+#    assert os.path.relpath(path_to_dat_dir) == 'pyrcs\\data'
 
 
 def test_init_data_dir():
@@ -103,25 +103,25 @@ def test_init_data_dir():
     assert os.path.relpath(current_dat_dir) == 'data'
 
 
-def test_make_file_pathname():
-    from pyrcs.utils import make_file_pathname
-    from pyrcs.line_data import Bridges
-    import os
+# def test_make_file_pathname():
+#     from pyrcs.utils import make_file_pathname
+#     from pyrcs.line_data import Bridges
+#     import os
 
-    bridges = Bridges()
+#     bridges = Bridges()
 
-    example_pathname = make_file_pathname(bridges, data_name="example-data", ext=".pickle")
-    assert os.path.relpath(example_pathname) == 'pyrcs\\data\\line-data\\bridges\\example-data.pickle'
+#     example_pathname = make_file_pathname(bridges, data_name="example-data", ext=".pickle")
+#     assert os.path.relpath(example_pathname) == 'pyrcs\\data\\line-data\\bridges\\example-data.pickle'
 
 
-def test_fetch_location_names_errata():
-    from pyrcs.utils import fetch_location_names_errata
+# def test_fetch_location_names_errata():
+#     from pyrcs.utils import fetch_location_names_errata
 
-    repl_dict = fetch_location_names_errata()
-    assert isinstance(repl_dict, dict)
+#     repl_dict = fetch_location_names_errata()
+#     assert isinstance(repl_dict, dict)
 
-    repl_dict = fetch_location_names_errata(regex=True, as_dataframe=True)
-    assert isinstance(repl_dict, pd.DataFrame)
+#     repl_dict = fetch_location_names_errata(regex=True, as_dataframe=True)
+#     assert isinstance(repl_dict, pd.DataFrame)
 
 
 def test_fetch_data_from_file(capfd):

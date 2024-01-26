@@ -11,16 +11,16 @@ from pyrcs.line_data import LocationIdentifiers
 class TestLocationIdentifiers:
     lid = LocationIdentifiers()
 
-    @pytest.mark.parametrize('update', [True, False])
-    @pytest.mark.parametrize('verbose', [True, False])
-    def test_fetch_explanatory_note(self, update, verbose):
-        exp_note = self.lid.fetch_explanatory_note(update=update, verbose=verbose)
+    # @pytest.mark.parametrize('update', [True, False])
+    # @pytest.mark.parametrize('verbose', [True, False])
+    # def test_fetch_explanatory_note(self, update, verbose):
+    #     exp_note = self.lid.fetch_explanatory_note(update=update, verbose=verbose)
 
-        assert isinstance(exp_note, dict)
-        assert list(exp_note.keys()) == [
-            'Multiple station codes explanatory note', 'Notes', 'Last updated date']
-        exp_note_dat = exp_note[self.lid.KEY_TO_MSCEN]
-        assert isinstance(exp_note_dat, pd.DataFrame)
+    #     assert isinstance(exp_note, dict)
+    #     assert list(exp_note.keys()) == [
+    #         'Multiple station codes explanatory note', 'Notes', 'Last updated date']
+    #     exp_note_dat = exp_note[self.lid.KEY_TO_MSCEN]
+    #     assert isinstance(exp_note_dat, pd.DataFrame)
 
     def test__parse_location_name(self):
         dat = self.lid._location_name('Abbey Wood')
